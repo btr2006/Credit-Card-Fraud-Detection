@@ -1,106 +1,338 @@
-# Credit Card Fraud Detection using Machine Learning & Streamlit
+# 💳 Credit Card Fraud Detection using Machine Learning & Streamlit
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.32.2-red.svg)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.4.1-orange.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-Latest-red.svg)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Latest-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Status](https://img.shields.io/badge/Status-Completed-success.svg)
 
-## Project Overview
-A production-quality, modular, and interactive Credit Card Fraud Detection System built with Python and Streamlit. This project trains multiple machine learning models on highly imbalanced transaction data using SMOTE, automatically selects the best performing model based on ROC-AUC score, and serves real-time predictions through a user-friendly Streamlit web dashboard.
+---
 
-## Features
-- **End-to-End ML Pipeline:** Data loading, preprocessing, scaling, SMOTE resampling, and model evaluation.
-- **Multiple Models:** Trains Logistic Regression, Decision Tree, Random Forest, and SVM classifiers.
-- **Automatic Model Selection:** Compares models and automatically serializes the best performing one to `.pkl` format.
-- **Interactive Dashboard:** A Streamlit frontend for exploring the dataset, viewing model performance charts, and running predictions on new CSV data.
-- **Zero-Retraining Inference:** The Streamlit app strictly loads the pre-trained model for fast inference without incurring training delays.
+## 📌 Project Overview
 
-## Folder Structure
+This project is a **Credit Card Fraud Detection System** built using **Python, Machine Learning, and Streamlit**. It detects fraudulent credit card transactions by training multiple machine learning models on an imbalanced dataset and automatically selecting the best-performing model based on evaluation metrics.
+
+The application provides an interactive **Streamlit dashboard** that allows users to:
+
+- Explore the dataset
+- Visualize fraud patterns
+- Upload transaction CSV files
+- Predict fraudulent transactions instantly
+- Download prediction results
+
+The trained model is saved as a **`.pkl`** file, ensuring that predictions are performed without retraining the model.
+
+---
+
+## 🚀 Features
+
+- ✅ End-to-End Machine Learning Pipeline
+- ✅ Automatic Data Preprocessing
+- ✅ SMOTE for Class Imbalance Handling
+- ✅ Multiple Machine Learning Algorithms
+  - Logistic Regression
+  - Decision Tree
+  - Random Forest
+  - Support Vector Machine (SVM)
+- ✅ Automatic Best Model Selection
+- ✅ Model Serialization using Joblib (`.pkl`)
+- ✅ Interactive Streamlit Dashboard
+- ✅ CSV Upload & Batch Prediction
+- ✅ Download Prediction Results
+- ✅ Professional Data Visualizations
+- ✅ Modular Project Structure
+- ✅ Clean & Well-Documented Code
+
+---
+
+# 🛠️ Technologies Used
+
+- Python 3.11+
+- Streamlit
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Imbalanced-learn (SMOTE)
+- Joblib
+
+---
+
+# 📂 Project Structure
+
 ```text
-credit crad frauad detection/
+Credit-Card-Fraud-Detection/
+
 │
 ├── dataset/
-│      ├── creditcard.csv       # (Needs to be downloaded)
-│      └── sample_input.csv     # (Generated during training)
+│   ├── creditcard.csv          # Download from Kaggle
+│   └── sample_input.csv        # Generated during training
 │
-├── models/                     # (Generated during training)
-│      ├── fraud_model.pkl
-│      └── scaler.pkl
+├── models/
+│   ├── fraud_model.pkl
+│   └── scaler.pkl
 │
-├── outputs/                    # (Generated during training)
-│      ├── best_model_info.json
-│      └── ... plots (.png)
+├── outputs/
+│   ├── best_model_info.json
+│   ├── confusion_matrix.png
+│   ├── roc_curve.png
+│   ├── precision_recall_curve.png
+│   └── ...
 │
-├── app.py                      # Streamlit application
-├── train_model.py              # ML training script
-├── utils.py                    # Helper functions
-├── config.py                   # Project configurations
-├── requirements.txt            # Python dependencies
-├── README.md                   # Project documentation
-└── LICENSE                     # MIT License
+├── app.py
+├── train_model.py
+├── utils.py
+├── config.py
+├── requirements.txt
+├── README.md
+└── LICENSE
 ```
 
-## Dataset Source
-The project uses the Kaggle Credit Card Fraud Detection dataset.
-Download it from: [Kaggle - Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+---
 
-*Note: You must extract the `creditcard.csv` file and place it inside the `dataset/` directory before running the training script.*
+# 📊 Dataset
 
-## Installation
+This project uses the **Credit Card Fraud Detection Dataset** available on Kaggle.
 
-1. **Clone the repository:**
-   ```bash
-   git clone <your-repo-url>
-   cd credit crad frauad detection
-   ```
+**Dataset Link**
 
-2. **Create a Virtual Environment (Optional but recommended):**
-   ```bash
-   python -m venv venv
-   # Windows
-   venv\Scripts\activate
-   # macOS/Linux
-   source venv/bin/activate
-   ```
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
-3. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+> **Note:**  
+> The dataset is **not included** in this repository because it exceeds GitHub's upload size limit.
 
-## How to Train
+After downloading:
 
-Run the training pipeline to preprocess data, train models, and save the best model and scaler.
+1. Extract the ZIP file.
+2. Copy `creditcard.csv`.
+3. Place it inside the `dataset/` folder.
+
+Example:
+
+```text
+dataset/
+    creditcard.csv
+```
+
+---
+
+# ⚙️ Installation
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/btr2006/Credit-Card-Fraud-Detection.git
+```
+
+```bash
+cd Credit-Card-Fraud-Detection
+```
+
+---
+
+## 2️⃣ Create a Virtual Environment (Recommended)
+
+### Windows
+
+```bash
+python -m venv venv
+```
+
+```bash
+venv\Scripts\activate
+```
+
+### macOS/Linux
+
+```bash
+python3 -m venv venv
+```
+
+```bash
+source venv/bin/activate
+```
+
+---
+
+## 3️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# 🤖 Model Training
+
+Run the training script:
 
 ```bash
 python train_model.py
 ```
-*This process will evaluate all models and automatically save `fraud_model.pkl` and `scaler.pkl` to the `models/` directory, along with evaluation plots in the `outputs/` directory.*
 
-## How to Run Streamlit
+The training pipeline will:
 
-Once the model is trained and saved, you can launch the Streamlit dashboard:
+- Load the dataset
+- Preprocess the data
+- Apply SMOTE
+- Train multiple ML models
+- Compare performance
+- Select the best model
+- Save:
+
+```text
+models/
+│
+├── fraud_model.pkl
+└── scaler.pkl
+```
+
+It also generates evaluation plots and performance reports inside the `outputs/` folder.
+
+---
+
+# 🌐 Run the Streamlit Application
+
+After training is complete:
 
 ```bash
 streamlit run app.py
 ```
-*The app will be available locally at `http://localhost:8501/`.*
 
-## Machine Learning Workflow
-1. **Data Preprocessing:** Handles missing values and duplicates.
-2. **Train/Test Split:** Standard 80/20 split with stratification.
-3. **Scaling:** Standardizes features using `StandardScaler`.
-4. **Class Balancing:** Applies `SMOTE` strictly on the training set to combat massive class imbalance.
-5. **Model Evaluation:** Models are scored on Accuracy, Precision, Recall, F1 Score, and ROC-AUC.
-6. **Inference:** Web app loads serialized artifacts to classify user-uploaded CSV batches.
+The application will launch locally at:
 
-## Future Improvements
-- Integrate Deep Learning models (e.g., Autoencoders, Neural Networks).
-- Deploy the Streamlit app to Streamlit Cloud, AWS, or Heroku.
-- Add an API endpoint using FastAPI for automated integrations.
+```text
+http://localhost:8501
+```
 
-## License
-MIT License. See `LICENSE` for more information.
+---
 
-## Author
-Senior Machine Learning & UI/UX Engineer
+# 📈 Machine Learning Workflow
+
+```
+Dataset
+    │
+    ▼
+Data Preprocessing
+    │
+    ▼
+Train-Test Split
+    │
+    ▼
+Feature Scaling
+    │
+    ▼
+SMOTE
+    │
+    ▼
+Train Multiple Models
+    │
+    ▼
+Evaluate Performance
+    │
+    ▼
+Select Best Model
+    │
+    ▼
+Save Model (.pkl)
+    │
+    ▼
+Streamlit Prediction Dashboard
+```
+
+---
+
+# 📊 Evaluation Metrics
+
+Models are evaluated using:
+
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC-AUC Score
+- Confusion Matrix
+- ROC Curve
+- Precision-Recall Curve
+
+---
+
+# 📤 Streamlit Features
+
+The application includes:
+
+- 🏠 Home
+- 📊 Dataset Overview
+- 📈 Visualizations
+- 🤖 Model Information
+- 📥 Download Sample CSV
+- 📤 Upload CSV
+- 🔍 Fraud Prediction
+- 📋 Prediction Results
+- 📥 Download Prediction CSV
+
+---
+
+# 📄 Sample Input
+
+Users can download a sample CSV directly from the application.
+
+The sample file contains:
+
+```
+Time
+V1
+V2
+...
+V28
+Amount
+```
+
+Users can upload the edited CSV for batch fraud prediction.
+
+---
+
+# 🔮 Future Improvements
+
+- Deep Learning Models (ANN, Autoencoders)
+- XGBoost & LightGBM
+- Explainable AI using SHAP/LIME
+- REST API with FastAPI
+- Docker Containerization
+- CI/CD Pipeline
+- Cloud Deployment (AWS, Azure, GCP)
+- Streamlit Cloud Deployment
+
+---
+
+# 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+# 👨‍💻 Author
+
+## **Bhanu Teja Reddy**
+
+Computer Science Engineering (Artificial Intelligence & Machine Learning)
+
+GitHub:
+**https://github.com/btr2006**
+
+Project Repository:
+**https://github.com/btr2006/Credit-Card-Fraud-Detection**
+
+---
+
+## ⭐ Support
+
+If you found this project useful:
+
+⭐ Star this repository
+
+🍴 Fork the repository
+
+📢 Share it with others
+
+Happy Coding! 🚀
